@@ -11,5 +11,6 @@ Hier findet Ihr Vorträge und eventuell vorhandene Code Beispiele der Hamburg Po
 ## Organisatoren
 
 Bei Fragen an das Orgateam wende dich bitte an den offiziellen Twitter Account [@hhpsug](https://twitter.com/hhpsug) oder schreibe uns direkt an.
+
 * [Fabian Bader](https://twitter.com/fabian_bader)
 * [Christoph Burmeister](https://twitter.com/_Burbert)
