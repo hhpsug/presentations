@@ -1,6 +1,5 @@
 ﻿# VM UUID "DeepDive" 
 
-## Functions
 function Get-VMID {
 
   [CmdletBinding()]
