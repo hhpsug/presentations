@@ -15,5 +15,5 @@ $VMsOn.Count
 $VMsOff.Count
 
 ## Get-View mit Filter gegen Get-VM mit Where-Object
-Measure-Command {$VMs = Get-VM; $VMs | Where-Object {$_.Name -eq "test"} | fl}
+Measure-Command {Get-VM -Name "test" | fl}
 Measure-Command {Get-View -ViewType VirtualMachine -Filter @{Name="^test"} | fl}
