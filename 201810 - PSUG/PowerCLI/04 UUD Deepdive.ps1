@@ -1,38 +1,7 @@
-﻿function Get-VMID {
-<#	
-    .NOTES
-    ===========================================================================
-    Created by: Markus Kraus
-    Twitter: @VMarkus_K
-    Private Blog: mycloudrevolution.com
-    ===========================================================================
-    Changelog:  
-    2016.09 ver 1.0 Base Release 
-    ===========================================================================
-    External Code Sources:  
-    http://www.lucd.info/2011/04/22/get-the-maximum-iops/
-    ===========================================================================
-    Tested Against Environment:
-    vSphere Version: 5.5 U2
-    PowerCLI Version: PowerCLI 6.3 R1, PowerCLI 6.5 R1
-    PowerShell Version: 4.0, 5.0
-    OS Version: Windows 8.1, Server 2012 R2
-    ===========================================================================
-    Keywords vSphere, ESXi, VM, vDisk
-    ===========================================================================
+﻿# VM UUID "DeepDive" 
 
-    .DESCRIPTION
-    This Function reports all VM IDs     
-
-    .Example
-    Get-VM -Name TST* | Get-VMID
-
-	.Example
-    Get-Folder -Name TST | Get-VM | Get-VMID | ft -AutoSize
-
-#Requires PS -Version 4.0
-#Requires -Modules VMware.VimAutomation.Core, @{ModuleName="VMware.VimAutomation.Core";ModuleVersion="6.3.0.0"}
-#>
+## Functions
+function Get-VMID {
 
   [CmdletBinding()]
     param( 
@@ -85,8 +54,9 @@ function Convert-UUID {
     
     }
     
+## Match OS and VMware UUID 
 
-
+### Get BIOS UUID from Wiondows OS
 $code =@'
 (Get-WmiObject Win32_ComputerSystemProduct).UUID
 '@
@@ -103,11 +73,11 @@ $sInvP = @{
    ScriptText = $code
    GuestCredential = $cred
 }
+### Prepare Output
 Remove-Variable UUIDwin, UUIDreturn -ErrorAction SilentlyContinue
 $UUIDreturn = Invoke-VMScriptPlus @sInvP
 [String]$UUIDwin = $UUIDreturn.ScriptOutput
 
+### Output
 Convert-UUID -UUIDwin $UUIDwin
 Get-VM -Name "Veeam-03" | Get-VMID | select UUID
-
-

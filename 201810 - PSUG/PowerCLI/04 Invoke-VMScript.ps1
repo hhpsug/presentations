@@ -1,4 +1,7 @@
-﻿class MyOBN:System.Management.Automation.ArgumentTransformationAttribute {
+﻿# Invoke-VMScript
+
+## Function and Class from Luc (With Modification)
+class MyOBN:System.Management.Automation.ArgumentTransformationAttribute {
 [ValidateSet(
 'Cluster', 'Datacenter', 'Datastore', 'DatastoreCluster', 'Folder',
 'VirtualMachine', 'VirtualSwitch', 'VMHost', 'VIServer'
@@ -362,6 +365,7 @@ GuestOS      = $GuestOSType
 }
 }
 
+## Example
 $code =@'
 if [ -f /etc/os-release ]
 then
