@@ -1,6 +1,7 @@
 ﻿# ESXCLI -V2
 
 $VMHost = $VMHosts | select -First 1
+$Datastore =  $VMHost | Get-Datastore -Name $TempDatastoreName
 $HostPath = $Datastore.ExtensionData.Info.Url.remove(0,5) + $LocalPath.Split("\")[-1]
 
 ## Install-VMhost
